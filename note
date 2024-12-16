@@ -1,0 +1,30 @@
+celery的简单使用
+
+一, 说明
+celery在win10下的使用, 只使用的redis作为队列, 没连接mysql
+
+
+二, 命令
+    1. 启动Worker管理 (必须执行)
+        celery -A base_config worker --pool=solo  --loglevel=info --purge
+            base_config就是celery的app的入口, 名字必须对起来, 不然启动报错
+            --pool=solo, 查了好久,是celery在windows/win10下运行, 会报错, 如: Error: not enough values to unpack (expected 3, got 0)
+            --loglevel=info/debug  日志等级
+            --purge 清除之前的任务, 防止之前定时对现在的有影响
+    2. 使用程序调用, 触发方法调用 (模拟调用1)
+        执行main.py, 模拟前端web请求过来, 触发异步调用celery方法
+    3. 启动定时 (模拟调用2)
+        定时执行某些方法
+        配置参考schedule_config.py, 配置具体方法的触发时间点
+
+
+
+
+
+
+
+
+
+
+
+
